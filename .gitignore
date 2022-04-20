@@ -1,0 +1,34 @@
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
+venv
+
+
+.vscode
+
+
+static/0.jpg
+static/1.jpg
+static/2.jpg
+static/3.jpg
+static/4.jpg
+static/5.jpg
+static/6.jpg
+static/7.jpg
+static/8.jpg
+static/9.jpg
+static/A.jpg
+static/B.jpg
+static/C.jpg
+static/D.jpg
+static/E.jpg

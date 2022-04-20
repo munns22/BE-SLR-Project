@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Text to Image Module{% endblock %}
+{% block content %}
+
+<header>
+  <!-- Navbar : Start -->
+  <nav class="navbar navbar-dark navbar-expand-sm">
+    <div class="logo">
+      <a class="navbar-brand" href="/"><span class="brandname">SignLearn</span></a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"> Learn </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/learn-digits">Learn Digits</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/learn-alphabets">Learn Alphabets</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        {% if (session.get("logged_in") == True) %}
+        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Alert for Notifications -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{ category }} alert-dismissible fade show m-2" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<main class="module-buttons p-md-2">
+  <div class="row m-md-3 m-1 wrap-center ">
+    <div class="col-sm-4 me-md-5 m-1">
+      <a href="/webcam">
+        <button class="btn btn-lg"> Open Web-Camera </button>
+      </a>
+    </div>
+
+    <div class=" col-sm-4 ms-md-5 m-1">
+      <a href="/text"><button type="button" class="btn btn-lg"> Open Text to image</button></a>
+    </div>
+  </div>
+</main>
+
+<!-- <footer>
+  <div class="container-fluid bottom-footer ">
+    <div class="row">
+      <div class="col-12">
+        <p>SignLearn © 2021 - All rights reserved</p>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+{% endblock %}

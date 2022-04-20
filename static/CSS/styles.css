@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu:wght@300&display=swap');
+
+:root {
+	--black-shade: rgb(24, 22, 22);
+	--off-white: #f3f4f6;
+	--purple: #6059f1;
+	--light: #d4d4d4;
+	--grey: #71717a;
+	--orangish: #ff6459;
+	--nearly-black: #343434;
+}
+/* General Styles */
+*,
+*::after,
+*::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+body {
+	color: var(--nearly-black);
+}
+
+/* Navbar: Start */
+h1 {
+	padding: 1rem;
+	text-align: center;
+}
+header > .navbar {
+	padding-right: 2rem;
+	background: -webkit-linear-gradient(to right, #29323c, #485563);
+	background: linear-gradient(to right, #1b2027, #485563);
+}
+.brandname {
+	font-size: 2rem;
+	font-weight: 700;
+	font-family: 'Ubuntu', sans-serif;
+	padding-left: 1rem;
+}
+.nav-link {
+	margin-left: 1rem;
+}
+.navbar ul li a {
+	font-size: 1rem;
+	font-weight: 600;
+	font-family: 'Poppins', sans-serif;
+}
+.dropdown-item {
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--grey);
+}
+/* Navbar End */
+
+/* Footer: Bottom Footer styling */
+.bottom-footer {
+	background-color: var(--black-shade);
+	font-weight: 500;
+}
+.bottom-footer p {
+	color: var(--off-white);
+	text-align: center;
+	font-size: medium;
+	margin: 0.2rem 0;
+}
+
+/* Index Page: Section 1 Start */
+.img-info {
+	margin-right: 0;
+	background: url(../Images/layered-waves-4.svg);
+	background-size: cover;
+}
+.hand-signs {
+	position: relative;
+	z-index: 1;
+	width: 350px;
+	margin: 1rem 0 1rem 3rem;
+}
+.info {
+	margin: 2rem 1rem 1rem 0;
+	background: url(../Images/layered-steps2.svg);
+	background-repeat: no-repeat;
+	width: 100%;
+	padding: 2rem;
+}
+
+.info h3 {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 700;
+	color: var(--purple);
+	position: relative;
+	font-style: italic;
+}
+
+.info p {
+	font-size: 1rem;
+}
+
+/* Section: Buttons Start */
+.wrap-center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.wrap-right {
+	margin: 1rem;
+	margin-right: 10rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: end;
+}
+main > .row .btn.btn-lg {
+	color: var(--orangish);
+	font-weight: 600;
+	border-radius: 7px;
+	background: #fafafa;
+	box-shadow: 9px 9px 17px #9e9e9e, -9px -9px 17px #ffffff;
+}
+main > .row .btn.btn-lg:hover {
+	transform: translateY(6px) translateX(3.5px);
+	transition: transform 0.3s ease;
+	box-shadow: none;
+	border-radius: 7px;
+	background: #f1f1f1;
+	box-shadow: inset 5px 5px 9px #d1d1d1, inset -5px -5px 9px #ffffff;
+}
+
+/* About Us Page */
+.about {
+	color: rgba(204, 99, 58, 0.966);
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 700;
+}
+.about-us-section{
+	color: rgb(104, 104, 104);
+	font-size: 20px
+}
+.bold-txt {
+	font-size: 1.1rem;
+	font-weight: 500;
+}
+.bold-txt p {
+	color: peru;
+	font-size: 2rem;
+}
+.bold-txt div {
+	color: rgb(104, 104, 104);
+	font-size: 1.2rem;
+}
+
+/* Learn Page Styling*/
+.learning {
+	font-weight: 600;
+	background-color: var(--off-white);
+}
+.learning > h4 {
+	font-weight: 600;
+	color: var(--grey);
+}
+
+/*Login & Registration Form Styles  */
+.login-container{
+  font-size: 16px;
+  background : whitesmoke;
+  color:rgb(87, 86, 86);
+  height: 100vh;
+  width: 100%;
+}
+.login-form{
+  margin: auto;
+  width: 350px;
+  padding: 15px;
+  max-width: 100%;
+}
+.login-form .form-control{
+  font-size: 15px;
+  min-height: 48px;
+  font-weight: 500;
+}
+.login-form a{
+  text-decoration: none;
+  color:#666;
+}
+.login-form a:hover{
+  color:#723dbe;
+}
+.forgot-link{
+  font-size: 13px;
+}
+
+.form-control:focus{
+  border-color:#723dbe;
+  box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+}
+.btn-custom{
+  background: #723dbe;
+  border-color:#723dbe;
+  color:#fff;
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 48px;
+}
+.btn-custom:focus,
+.btn-custom:hover,
+.btn-custom:active,
+.btn-custom:active:focus{
+  background: #54229d;
+  border-color: #54229d;
+  color:#fff;
+}
+
+.btn-custom:focus{
+  box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+}
+/*END : Login & Registration Form*/
+
+
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+	.info {
+		margin-top: 0rem;
+		padding: 1rem;
+		background: #f2994a; /* fallback for old browsers */
+		background: -webkit-linear-gradient(
+			to right,
+			#f2c94c,
+			#f2994a
+		); /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(
+			to right,
+			#f2c94c,
+			#f2994a
+		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+	main > .row > div {
+		text-align: center;
+		padding: 0.5rem;
+	}
+	main {
+		margin-bottom: 1rem;
+	}
+}
+
+

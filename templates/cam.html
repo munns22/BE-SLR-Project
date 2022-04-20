@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Web-Camera Page{% endblock %}
+{% block content %}
+
+<!-- Breadcrumbs Section -->
+<section class="learning p-2 ps-sm-2">
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+        aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/section">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Webcam Page</li>
+        </ol>
+    </nav>
+</section>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, msg in messages %}
+<div class="alert alert-{{ category }} alert-dismissible fade show m-sm-3 m-2" role="alert">
+    <span>{{ msg }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="wrapper">
+    <div class="rectangle"></div>
+    <!--Empty Div for Rectangular Box-->
+    <video id="video" width="640" height="480" autoplay style="background-color: grey"></video>
+    <button class="btn btn-md btn-outline" id="send">Take & Send Photo</button><br>
+    <canvas id="canvas" width="640" height="480" style="background-color: grey"></canvas>
+</div>
+
+<script>
+    // Elements for taking the snapshot
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    //context.strokeRect(200, 50, 100, 100);
+    // Get access to the camera!
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+            //video.src = window.URL.createObjectURL(stream);
+            video.srcObject = stream;
+            video.play();
+        });
+    }
+
+    // Trigger photo take
+    document.getElementById("send").addEventListener("click", function () {
+        context.drawImage(video, 0, 0, 640, 480); // copy frame from <video>
+        canvas.toBlob(upload, "image/jpeg");  // convert to file and execute function `upload`
+    });
+
+    function upload(file) {
+        // create form and append file
+        var formdata = new FormData();
+        formdata.append("snap", file);
+
+        // create AJAX requests POST with file
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{{ url_for('upload') }}", true);
+        xhr.onload = function () {
+            if (this.status = 200) {
+                console.log(this.response);
+            } else {
+                console.error(xhr);
+            }
+            alert(this.response);
+            // console.log(this.response);
+
+        };
+        xhr.send(formdata);
+    }
+
+</script>
+{% endblock %}
