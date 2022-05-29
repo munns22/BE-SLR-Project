@@ -29,18 +29,18 @@
 				<li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
 				{% endif %}
 				{% if (session.get("logged_in") == True) %}
+				<li class="nav-item"><a class="nav-link" href="/section">Section</a></li>
 				<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
 				{% endif %}
 			</ul>
 		</div>
 	</nav>
 </header>
-<!-- Alert for Instructions -->
+<!-- Alert for Instructions
 <div class="alert alert-info alert-dismissible fade show m-2" role="alert">
-	<strong>Instructions:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor exercitationem minus,
-	architecto dolorum nam adipisci eaque nobis voluptatibus!
+	<strong>Instructions:</strong> Please complete registration & login process initially to use the full functionality.
 	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+</div>  -->
 
 <section>
 	<div class="row img-info">
@@ -50,7 +50,7 @@
 	</div>
 	<div class="row info">
 		<div class="col-md-6 ms-sm-auto m-2">
-			<h3>What is SignLearn ?</h3>
+			<h2>What is SignLearn ?</h2>
 			<p>Sign language is the basic means of communication for those with hearing and vocal disabilities. Those
 				disadvantaged have difficulty in their day-to-day lives.
 				We aim to develop a system that would ease this difficulty in communication. A Sign Language Recognition

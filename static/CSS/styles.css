@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Ubuntu:wght@300&display=swap'); */
 
 :root {
-	--black-shade: rgb(24, 22, 22);
-	--off-white: #f3f4f6;
+	--black-shade: #181616;
+	--off-white: #e6e3dd;
 	--purple: #6059f1;
 	--light: #d4d4d4;
 	--grey: #71717a;
@@ -20,8 +20,14 @@
 }
 body {
 	color: var(--nearly-black);
+	overflow-y: scroll;
+	scrollbar-width: none;               /* To hide the scrollbar for Firefox */
+	-ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
-
+body::-webkit-scrollbar { /* WebKit  Chrome*/
+	width: 0;
+	height: 0;
+}
 /* Navbar: Start */
 h1 {
 	padding: 1rem;
@@ -34,8 +40,8 @@ header > .navbar {
 }
 .brandname {
 	font-size: 2rem;
-	font-weight: 700;
-	font-family: 'Ubuntu', sans-serif;
+	font-weight: 500;
+	font-family: 'Satisfy', cursive;
 	padding-left: 1rem;
 }
 .nav-link {
@@ -85,39 +91,39 @@ header > .navbar {
 	padding: 2rem;
 }
 
-.info h3 {
-	font-family: 'Ubuntu', sans-serif;
-	font-weight: 700;
+.info h2 {
+	font-family: 'Satisfy', cursive;
+	font-weight: 550;
 	color: var(--purple);
 	position: relative;
-	font-style: italic;
+	line-height: normal;
 }
 
 .info p {
 	font-size: 1rem;
+	line-height: normal;
 }
 
-/* Section: Buttons Start */
+/* Section Page Stylings */
 .wrap-center {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 }
-.wrap-right {
-	margin: 1rem;
-	margin-right: 10rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	align-items: end;
+.row.wrap-center{
+	margin: 1.8rem 1rem 2rem 1rem;
+	padding: 1.8rem 1rem;
+} 
+.wrap-center div button{
+	margin:1.3rem 1rem;
 }
 main > .row .btn.btn-lg {
 	color: var(--orangish);
 	font-weight: 600;
 	border-radius: 7px;
 	background: #fafafa;
-	box-shadow: 9px 9px 17px #9e9e9e, -9px -9px 17px #ffffff;
+	box-shadow: 9px 9px 17px #807e7e, -9px -9px 17px #ffffff;
 }
 main > .row .btn.btn-lg:hover {
 	transform: translateY(6px) translateX(3.5px);
@@ -127,12 +133,22 @@ main > .row .btn.btn-lg:hover {
 	background: #f1f1f1;
 	box-shadow: inset 5px 5px 9px #d1d1d1, inset -5px -5px 9px #ffffff;
 }
+main > .row > div {
+	text-align: center;
+}
+#section-footer {
+	position: absolute;
+  bottom: 0;
+  width: 100%;
+	background: url(../Images/wave.svg);
+}
 
 /* About Us Page */
 .about {
 	color: rgba(204, 99, 58, 0.966);
-	font-family: 'Ubuntu', sans-serif;
-	font-weight: 700;
+	font-family: 'Satisfy', cursive;
+	font-weight: 550;
+	font-size: 2.2rem;
 }
 .about-us-section{
 	color: rgb(104, 104, 104);
@@ -144,7 +160,8 @@ main > .row .btn.btn-lg:hover {
 }
 .bold-txt p {
 	color: peru;
-	font-size: 2rem;
+	font-style: italic;
+	font-size: 1.6rem;
 }
 .bold-txt div {
 	color: rgb(104, 104, 104);
@@ -217,31 +234,44 @@ main > .row .btn.btn-lg:hover {
 }
 /*END : Login & Registration Form*/
 
-
+/*START: Text to Image Page  */
+.text2img{
+	margin: 1.5rem 0.5rem 0.5rem 2rem;
+	padding: 0.5rem;
+}
+/*END: Text to Image Page  */
 
 /* Responsiveness */
 @media screen and (max-width: 768px) {
 	.info {
-		margin-top: 0rem;
+		margin: 1rem 1rem 0 0;
 		padding: 1rem;
-		background: #f2994a; /* fallback for old browsers */
-		background: -webkit-linear-gradient(
-			to right,
-			#f2c94c,
-			#f2994a
-		); /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(
-			to right,
-			#f2c94c,
-			#f2994a
-		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: #acb6e5;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #86fde8, #acb6e5);  /* Chrome 10-25, 	Safari 5.1-6 */
+		background: linear-gradient(to right, #86fde8, #acb6e5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+	.hand-signs{
+		position: relative;
+		display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 65%;
+	}
+	.img-info{
+		background: none;
 	}
 	main > .row > div {
-		text-align: center;
 		padding: 0.5rem;
 	}
 	main {
 		margin-bottom: 1rem;
+	}
+	.wrap-center div button{
+		margin:1rem 1rem;
+	}
+	.wrap-center {
+		margin: 1rem;
+		padding: 1rem;
 	}
 }
 

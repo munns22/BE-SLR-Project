@@ -2,12 +2,45 @@
 {% block title %}Text to Image Module{% endblock %}
 {% block content %}
 
+<header>
+    <!-- Navbar : Start -->
+    <nav class="navbar navbar-dark navbar-expand-sm">
+        <div class="logo">
+            <a class="navbar-brand" href="/"><span class="brandname">SignLearn</span></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> Learn </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/learn-digits">Learn Digits</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/learn-alphabets">Learn Alphabets</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                {% if (session.get("logged_in") == True) %}
+                <li class="nav-item"><a class="nav-link" href="/section">Section</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+
 <!-- Breadcrumbs Section -->
 <section class="learning p-2 ps-sm-3">
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
         aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/section">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/section">Section Page</a></li>
             <li class="breadcrumb-item active" aria-current="page">Text to Image Conversion</li>
         </ol>
     </nav>
@@ -22,16 +55,18 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
-
-<form method="POST" action="">
-    <input type="text" class="m-3" name="ip" placeholder="Enter text" maxlength="1" required>
-    <button class="btn btn-sm btn-outline-primary" value="submit" type="submit"> Send </button>
-</form>
-{% if img %}
-<center>
+<main class="text2img">
+    <form method="POST" action="">
+        <input type="text" name="ip" placeholder="Enter text" maxlength="1" required>
+        <button class="btn btn-sm btn-outline-primary" value="submit" type="submit"> Send </button>
+    </form>
+    {% if img %}
     <h1><strong>{{img}}</strong></h1>
-</center>
-<center><img src="static\{{img}}.jpg" alt="Image" width="400px"></center>
+    <div class="wrap-center">
+        <img src="static\{{img}}.jpg" alt="Image" width="400px">
+    </div>
+    </div>
+</main>
 {% endif %}
 
 {% endblock %}

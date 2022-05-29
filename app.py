@@ -103,7 +103,11 @@ def login():
 
 @app.route("/section")
 def section():
-    return render_template("section.html")
+    if session.get("logged_in") == True:
+        return render_template("section.html")
+    else:
+        flash("Please login first ", "warning")
+        return redirect("/login")
 
 
 @app.route("/about")
@@ -124,78 +128,30 @@ def learnAlphabets():
 # Webcam code
 @app.route("/webcam")
 def webcam():
-    flash("Its working fine", "info")
-    return render_template("cam.html")
-
-
-@app.route("/upload", methods=["GET", "POST"])
-def upload():
-    if request.method == "POST":
-        # fs = request.files['snap'] # it raise error when there is no `snap` in form
-        fs = request.files.get("snap")
-        if fs:
-            print("FileStorage:", fs)
-            print("filename:", fs.filename)
-            fs.save("image.jpg")
-            # img = cv2.imread('image.jpg')
-            # print(img.shape) # Print image shape
-            # cv2.imshow("original", img)
-
-            # Cropping an image
-            # cropped_image = img[32:256, 16:240]
-
-            # Display cropped image
-            # cv2.imshow("cropped", cropped_image)
-
-            # Save the cropped image
-            # cv2.imwrite("crop.jpg", cropped_image)
-            classes = {
-                0: "Zero",
-                1: "One",
-                2: "Two",
-                3: "Three",
-                4: "Four",
-                5: "Five",
-                6: "Six",
-                7: "Seven",
-                8: "Eight",
-                9: "Nine",
-            }
-
-            # read model
-            # model = tf.keras.models.load_model("vgg_gpu.h5")
-
-            # read test img
-            # test_img=cv2.imread('crop.jpg')
-
-            # test_img=test_img.reshape(1,224,224,3)
-            # rescale
-            # test_img=test_img*(1./255)
-
-            # predict
-            # pred = model.predict(test_img)
-
-            # ans=classes[np.argmax(pred)]
-            # return "Your answer is:" +ans
-            # flash("Your answer is: ",+ans, 'success')
-        else:
-            flash("You forgot snap! ", "danger")
-    return "Hello World!"
+    if session.get("logged_in") == True:
+        return render_template("cam.html")
+    else:
+        flash("Please login first ", "warning")
+        return redirect("/login")
 
 
 # Text to Image code
 @app.route("/text", methods=["GET", "POST"])
 def text_to_img():
-    if request.method == "POST":
-        form = request.form
-        text_ip = form["ip"]
-        if text_ip.isalpha() or text_ip.isdigit():
-            return render_template("text_img.html", img=text_ip)
+    if session.get("logged_in") == True:
+        if request.method == "POST":
+            form = request.form
+            text_ip = form["ip"]
+            if text_ip.isalpha() or text_ip.isdigit():
+                return render_template("text_img.html", img=text_ip)
+            else:
+                flash("Please enter appropriate alphabet or digit", "warning")
+                return render_template("text_img.html")
         else:
-            flash("Please enter appropriate alphabet or digit", "warning")
             return render_template("text_img.html")
     else:
-        return render_template("text_img.html")
+        flash("Please login first ", "warning")
+        return redirect("/login")
 
 
 @app.route("/logout")
@@ -207,4 +163,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5030)
+    app.run(debug=True, port=5013)
